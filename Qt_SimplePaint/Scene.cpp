@@ -105,14 +105,14 @@ bool Scene::isInside(Point* bbox, Point p)
 	return p.getX() >= bbox[0].getX() && p.getX() <= bbox[2].getX() && p.getY() >= bbox[0].getY() && p.getY() <= bbox[2].getY();
 }
 
-bool Scene::deleteItem(Item* item)
+bool Scene::eraseItem(Item* item)
 {
 	if (item == nullptr) return false;
 	for (auto i = items.begin(); i != items.end(); ++i)
 	{
 		if (*i == item)
 		{
-			delete* i;
+			//delete* i; if you want to delete it - you have to do it OUTSIDE the method
 			items.erase(i); // i - INVALIDATED ITERATOR
 			return true;
 		}

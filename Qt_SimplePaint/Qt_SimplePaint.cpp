@@ -179,7 +179,8 @@ void Qt_SimplePaint::sceneClicked()
     case toDeleteItem:
     {
         Item* toDelete = ui.SceneWidget_placeholder->getItemAtPosition(lastClicks.front());
-        ui.SceneWidget_placeholder->deleteItem(toDelete);
+        ui.SceneWidget_placeholder->eraseItem(toDelete);
+        delete toDelete;
         ui.SceneWidget_placeholder->draw();
     }
     break;
@@ -305,10 +306,10 @@ void Qt_SimplePaint::sceneClicked()
                 lastClicks.clear();
                 if (nd != nullptr && nd != fst)
                 {
-                    std::vector<Item*> items = { fst->clone(), nd->clone() };
+                    std::vector<Item*> items = { fst, nd };
                     ui.SceneWidget_placeholder->addItem(new ComplexItem(items));
-                    ui.SceneWidget_placeholder->deleteItem(fst);
-                    ui.SceneWidget_placeholder->deleteItem(nd);
+                    ui.SceneWidget_placeholder->eraseItem(fst);
+                    ui.SceneWidget_placeholder->eraseItem(nd);
                     ui.SceneWidget_placeholder->draw();
                 }
             }

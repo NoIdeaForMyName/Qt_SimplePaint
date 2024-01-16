@@ -19,7 +19,7 @@ public:
 	std::list<Point>& getLastMouseClicks();
 	Point* getLastTwoMousePositions();
 	Item* getItemAtPosition(Point pos, Item* toIgnoreItems = nullptr, int length = 1);
-	bool deleteItem(Item* item);
+	bool eraseItem(Item* item);
 	void setShowBoundingBox(bool show);
 
 signals:
