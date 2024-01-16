@@ -45,7 +45,7 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -58,7 +58,7 @@
     <item row="0" column="0">
      <widget class="QLabel" name="A_label">
       <property name="text">
-       <string>TextLabel</string>
+       <string>a</string>
       </property>
      </widget>
     </item>
@@ -68,7 +68,7 @@
     <item row="1" column="0">
      <widget class="QLabel" name="B_label">
       <property name="text">
-       <string>TextLabel</string>
+       <string>b</string>
       </property>
      </widget>
     </item>
@@ -78,7 +78,7 @@
     <item row="2" column="0">
      <widget class="QLabel" name="Start_label">
       <property name="text">
-       <string>TextLabel</string>
+       <string>start</string>
       </property>
      </widget>
     </item>
@@ -88,7 +88,7 @@
     <item row="3" column="0">
      <widget class="QLabel" name="End_label">
       <property name="text">
-       <string>TextLabel</string>
+       <string>end</string>
       </property>
      </widget>
     </item>
