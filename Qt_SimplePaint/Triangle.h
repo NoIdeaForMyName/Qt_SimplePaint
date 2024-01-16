@@ -17,7 +17,7 @@ public:
 
 	void computeBoundingBox() override;
 	void translate(const Point& translationPoint) override;
-	void draw(QPainter& painter, bool drawBBox = false) override;
+	void draw(QPainter& painter) override;
 
 private:
 	Point p1;

@@ -52,9 +52,9 @@ void Triangle::translate(const Point& translationPoint)
 	p3.shift(translationPoint);
 }
 
-void Triangle::draw(QPainter& painter, bool drawBBox)
+void Triangle::draw(QPainter& painter)
 {
-	Shape::draw(painter, drawBBox);
+	Shape::draw(painter);
 	QPoint points[3] =
 	{
 		QPoint(p1.getX(), p1.getY()),

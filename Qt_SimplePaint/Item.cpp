@@ -44,23 +44,18 @@ Point* Item::getBoundingBox()
 	return boundingBox;
 }
 
-void Item::draw(QPainter& painter, bool drawBBox)
-{
-	if (drawBBox) drawBoundingBox(painter);
-}
-
-void Item::drawBoundingBox(QPainter& painter)
-{
-	QPen pen;
-	pen.setColor(Qt::red);
-	pen.setWidth(1);
-	painter.setPen(pen);
-	painter.setBrush(Qt::NoBrush);
-
-	if (updateBoundingBox)
-		computeBoundingBox();
-
-	painter.drawRect(QRect(boundingBox[0].getX(), boundingBox[0].getY(),
-		boundingBox[2].getX() - boundingBox[0].getX(),
-		boundingBox[2].getY() - boundingBox[0].getY()));
-}
+//void Item::drawBoundingBox(QPainter& painter)
+//{
+//	QPen pen;
+//	pen.setColor(Qt::red);
+//	pen.setWidth(1);
+//	painter.setPen(pen);
+//	painter.setBrush(Qt::NoBrush);
+//
+//	if (updateBoundingBox)
+//		computeBoundingBox();
+//
+//	painter.drawRect(QRect(boundingBox[0].getX(), boundingBox[0].getY(),
+//		boundingBox[2].getX() - boundingBox[0].getX(),
+//		boundingBox[2].getY() - boundingBox[0].getY()));
+//}

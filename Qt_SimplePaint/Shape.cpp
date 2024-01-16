@@ -18,9 +18,9 @@ void Shape::setFilled(bool filled)
 	this->filled = filled;
 }
 
-void Shape::draw(QPainter& painter, bool drawBBox)
+void Shape::draw(QPainter& painter)
 {
-	Primitive::draw(painter, drawBBox);
+	Primitive::draw(painter);
 	if (filled) painter.setBrush(Qt::black);
 	else painter.setBrush(Qt::NoBrush);
 }

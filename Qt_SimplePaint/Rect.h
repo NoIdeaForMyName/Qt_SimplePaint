@@ -15,7 +15,7 @@ public:
 	int getHeight() const;
 
 	void computeBoundingBox() override;
-	void draw(QPainter& painter, bool drawBBox = false) override;
+	void draw(QPainter& painter) override;
 
 private:
 	int width;

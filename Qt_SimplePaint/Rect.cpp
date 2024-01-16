@@ -37,8 +37,8 @@ void Rect::computeBoundingBox()
 	updateBoundingBox = false;
 }
 
-void Rect::draw(QPainter& painter, bool drawBBox)
+void Rect::draw(QPainter& painter)
 {
-	Shape::draw(painter, drawBBox);
+	Shape::draw(painter);
 	painter.drawRect(QRect(position.getX(), position.getY(), width, height));
 }

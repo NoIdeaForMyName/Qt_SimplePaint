@@ -20,7 +20,7 @@ public:
 	void setFont(QFont& newFont);
 
 	void computeBoundingBox() override;
-	void draw(QPainter& painter, bool drawBBox = false) override;
+	void draw(QPainter& painter) override;
 
 private:
 	QString text;

@@ -31,8 +31,8 @@ void Circle::computeBoundingBox()
 	updateBoundingBox = false;
 }
 
-void Circle::draw(QPainter& painter, bool drawBBox)
+void Circle::draw(QPainter& painter)
 {
-	Shape::draw(painter, drawBBox);
+	Shape::draw(painter);
 	painter.drawEllipse(position.getX(), position.getY(), 2 * r, 2 * r);
 }

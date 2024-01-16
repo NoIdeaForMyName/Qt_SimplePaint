@@ -19,8 +19,7 @@ public:
 	virtual void translate(const Point& translationPoint);
 	virtual void computeBoundingBox() = 0;
 	Point* getBoundingBox();
-	virtual void draw(QPainter& painter, bool drawBBox = false);
-	void drawBoundingBox(QPainter& painter);
+	virtual void draw(QPainter& painter) = 0;
 
 protected:
 	Point position;

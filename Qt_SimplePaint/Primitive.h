@@ -9,6 +9,6 @@ public:
 	Primitive(const Primitive& toCopy);
 	virtual ~Primitive() = default;
 
-	void draw(QPainter& painter, bool drawBBox = false) override;
+	void draw(QPainter& painter) override;
 };
 

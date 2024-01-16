@@ -47,8 +47,7 @@ public slots:
     void moveItem();
     void deleteItem();
 
-    void setShowBoundingBox();
-    //void setFillShapes();
+    //void setShowBoundingBox();
 
 private:
     Ui::Qt_SimplePaintClass ui;

@@ -8,10 +8,8 @@ Primitive::Primitive(const Primitive& toCopy)
 	: Item(toCopy.position)
 {}
 
-void Primitive::draw(QPainter& painter, bool drawBBox)
+void Primitive::draw(QPainter& painter)
 {
-	Item::draw(painter, drawBBox);
-
 	QPen pen;
 	pen.setColor(Qt::black);
 	pen.setWidth(2);

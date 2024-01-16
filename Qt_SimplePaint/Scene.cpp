@@ -1,9 +1,11 @@
 #include "Scene.h"
 
+#include "SelectionDecorator.h"
+
 Scene::Scene(QWidget* parent = nullptr)
 	: QWidget(parent)
-	, showBoundingBox(false)
 	, lastTwoMousePos(new Point[2])
+	, selectedItem(nullptr)
 {
 	//setObjectName("MyScene");
 	//QPalette pal = QPalette();
@@ -13,6 +15,7 @@ Scene::Scene(QWidget* parent = nullptr)
 	//setPalette(pal);
 	//show();
 
+	setMouseTracking(true); // mouse is being tracked even if button is not clicked
 	setStyleSheet("background-color: white");
 }
 
@@ -34,18 +37,12 @@ void Scene::paintEvent(QPaintEvent* event)
 
 	for (Item* it : items)
 	{
-		it->draw(painter, showBoundingBox);
+		it->draw(painter);
 		//it->drawBoundingBox(painter);
 	}
 
-	//TEST
-	//QPen pen;
-	//pen.setColor(Qt::green);
-	//pen.setWidth(5);
-	//painter.setPen(pen);
-	//painter.drawRect(0, 0, 50, 50);
-	QString text = "Hello World!";
-	//painter.drawText(QPoint(0, 80), "Hello World!");
+	if (selectedItem != nullptr)
+		selectedItem->draw(painter);
 }
 
 void Scene::draw()
@@ -68,7 +65,6 @@ Point* Scene::getLastTwoMousePositions()
 	return lastTwoMousePos;
 }
 
-
 void Scene::mousePressEvent(QMouseEvent* event)
 {
 	Point clickPos(event->position().x(), event->position().y());
@@ -79,10 +75,29 @@ void Scene::mousePressEvent(QMouseEvent* event)
 
 void Scene::mouseMoveEvent(QMouseEvent* event)
 {
-	Point clickPos(event->position().x(), event->position().y());
-	lastTwoMousePos[1] = lastTwoMousePos[0];
-	lastTwoMousePos[0] = clickPos;
-	emit mouseMoved();
+	Point mousePos(event->position().x(), event->position().y());
+
+	// part for "checking" an Item on Scene:
+	Item* newlySelectedItem = getItemAtPosition(mousePos);
+	if (selectedItem != newlySelectedItem)
+	{
+		delete selectedItem;
+		selectedItem = nullptr;
+		if (newlySelectedItem != nullptr)
+		{
+			selectedItem = new SelectionDecorator(newlySelectedItem);
+		}
+		draw();
+	}
+	// end
+
+	// part for moving, path drawing etc.
+	if (event->buttons() == Qt::LeftButton)
+	{
+		lastTwoMousePos[1] = lastTwoMousePos[0];
+		lastTwoMousePos[0] = mousePos;
+		emit mouseMoved();
+	}
 }
 
 Item* Scene::getItemAtPosition(Point pos, Item* toIgnoreItems, int length)
@@ -114,14 +129,9 @@ bool Scene::eraseItem(Item* item)
 		{
 			//delete* i; if you want to delete it - you have to do it OUTSIDE the method
 			items.erase(i); // i - INVALIDATED ITERATOR
+			selectedItem = nullptr;
 			return true;
 		}
 	}
 	return false;
 }
-
-void Scene::setShowBoundingBox(bool show)
-{
-	showBoundingBox = show;
-}
-

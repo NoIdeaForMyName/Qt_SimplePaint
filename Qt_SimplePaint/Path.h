@@ -11,7 +11,7 @@ public:
 	void addPoint(Point p);
 	//clone, draw, translate, computeBBox
 	Item* clone() const override;
-	void draw(QPainter& painter, bool drawBBox) override;
+	void draw(QPainter& painter) override;
 	void translate(const Point& translationPoint) override;
 	void computeBoundingBox() override;
 

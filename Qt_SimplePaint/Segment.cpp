@@ -52,9 +52,9 @@ void Segment::translate(const Point& translationPoint)
 	end.shift(translationPoint);
 }
 
-void Segment::draw(QPainter& painter, bool drawBBox)
+void Segment::draw(QPainter& painter)
 {
-	Primitive::draw(painter, drawBBox);
+	Primitive::draw(painter);
 	QPoint points[2] = { QPoint(start.getX(), start.getY()), QPoint(end.getX(), end.getY()) };
 	painter.drawPolygon(points, 2);
 }

@@ -54,12 +54,11 @@ void ComplexItem::translate(const Point& translationPoint)
 		item->translate(translationPoint);
 }
 
-void ComplexItem::draw(QPainter& painter, bool drawBBox)
+void ComplexItem::draw(QPainter& painter)
 {
-	Item::draw(painter, drawBBox);
 	for (auto item : items)
 	{
-		item->draw(painter, false);
+		item->draw(painter);
 	}
 }
 

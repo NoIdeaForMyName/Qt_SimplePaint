@@ -13,7 +13,7 @@ public:
 	bool isFilled() const;
 	void setFilled(bool filled);
 
-	void draw(QPainter& painter, bool drawBBox = false) override;
+	void draw(QPainter& painter) override;
 
 protected:
 	bool filled;

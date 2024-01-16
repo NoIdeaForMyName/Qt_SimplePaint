@@ -89,6 +89,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SelectionDecorator.cpp" />
+    <ClCompile Include="ItemDecorator.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Segment.cpp" />
@@ -118,9 +120,11 @@
     <None Include="Adaptic.qss" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SelectionDecorator.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="ComplexItem.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemDecorator.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Primitive.h" />

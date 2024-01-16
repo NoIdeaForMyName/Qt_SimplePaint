@@ -48,10 +48,8 @@ void TextItem::computeBoundingBox()
 	updateBoundingBox = false;
 }
 
-void TextItem::draw(QPainter& painter, bool drawBBox)
+void TextItem::draw(QPainter& painter)
 {
-	Item::draw(painter, drawBBox);
-
 	painter.setFont(font);
 	painter.setPen(Qt::black);
 	QFontMetrics metrics = QFontMetrics(font);

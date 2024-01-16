@@ -38,7 +38,6 @@ Qt_SimplePaint::Qt_SimplePaint(QWidget* parent)
     connect(ui.MoveButton, &QPushButton::clicked, this, &Qt_SimplePaint::moveItem);
     connect(ui.DeleteButton, &QPushButton::clicked, this, &Qt_SimplePaint::deleteItem);
 
-    connect(ui.Check_BBox, &QCheckBox::stateChanged, this, &Qt_SimplePaint::setShowBoundingBox);
 
     /*
     Rect* rect = new Rect(Point(20, 20), 20, 20);
@@ -149,12 +148,6 @@ void Qt_SimplePaint::moveItem()
 void Qt_SimplePaint::deleteItem()
 {
     itemType = toDeleteItem;
-}
-
-void Qt_SimplePaint::setShowBoundingBox()
-{
-    ui.SceneWidget_placeholder->setShowBoundingBox(ui.Check_BBox->checkState());
-    ui.SceneWidget_placeholder->draw();
 }
 
 void Qt_SimplePaint::sceneClicked()

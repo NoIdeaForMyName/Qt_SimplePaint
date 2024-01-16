@@ -20,7 +20,6 @@ public:
 	Point* getLastTwoMousePositions();
 	Item* getItemAtPosition(Point pos, Item* toIgnoreItems = nullptr, int length = 1);
 	bool eraseItem(Item* item);
-	void setShowBoundingBox(bool show);
 
 signals:
 	void mousePressed();
@@ -28,9 +27,9 @@ signals:
 
 private:
 	std::vector<Item*> items;
+	Item* selectedItem;
 	std::list<Point> mouseClicks;
 	Point* lastTwoMousePos;
-	bool showBoundingBox;
 
 	bool isInside(Point* bbox, Point p);
 

@@ -22,9 +22,9 @@ void Path::addPoint(Point p)
 	updateBoundingBox = true;
 }
 
-void Path::draw(QPainter& painter, bool drawBBox)
+void Path::draw(QPainter& painter)
 {
-	Primitive::draw(painter, drawBBox);
+	Primitive::draw(painter);
 	for (const Point& point : points)
 		painter.drawPoint(point.getX(), point.getY());
 }

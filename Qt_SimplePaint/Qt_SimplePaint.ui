@@ -160,19 +160,6 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QCheckBox" name="Check_BBox">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="text">
-          <string>Bounding Box</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QCheckBox" name="Check_Filled">
          <property name="text">
           <string>Filled</string>
