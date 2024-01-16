@@ -45,6 +45,12 @@
     <Filter Include="Source Files\Paint\Popup">
       <UniqueIdentifier>{a462fa60-479e-4745-81ca-452494b22fb8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Item\Singleton">
+      <UniqueIdentifier>{e120e3af-6e41-47b4-84e6-c02fefdeccfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Item\Singleton">
+      <UniqueIdentifier>{5db2f4a5-cf99-436c-b0f9-bf69c129f8ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Qt_SimplePaint.qrc">
@@ -112,6 +118,9 @@
     <ClCompile Include="TextParametersSelector.cpp">
       <Filter>Source Files\Paint\Popup</Filter>
     </ClCompile>
+    <ClCompile Include="SingletonItemContainer.cpp">
+      <Filter>Source Files\Item\Singleton</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Adaptic.qss" />
@@ -152,6 +161,12 @@
     </ClInclude>
     <ClInclude Include="Triangle.h">
       <Filter>Header Files\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Header Files\Item\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonItemContainer.h">
+      <Filter>Header Files\Item\Singleton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

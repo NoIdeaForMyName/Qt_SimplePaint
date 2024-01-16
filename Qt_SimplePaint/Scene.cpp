@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Singleton.h"
 
 Scene::Scene(QWidget* parent = nullptr)
 	: QWidget(parent)
@@ -12,6 +13,9 @@ Scene::Scene(QWidget* parent = nullptr)
 	//setAutoFillBackground(true);
 	//setPalette(pal);
 	//show();
+
+	// SINGLETON INITIALIZATION
+	Singleton<Item>::setItemsOnScene(items);
 
 	setStyleSheet("background-color: white");
 }

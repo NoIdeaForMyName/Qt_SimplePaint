@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Shape.h"
+#include "Singleton.h"
 
-class Rect : public Shape
+class Rect : public Shape, public Singleton<Rect>
 {
 
 public:

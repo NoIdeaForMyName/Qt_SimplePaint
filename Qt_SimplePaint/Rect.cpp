@@ -2,12 +2,14 @@
 
 Rect::Rect(const Point& position, int width, int height, bool filled)
 	: Shape(position, filled)
+	, Singleton(this)
 	, width(width)
 	, height(height)
 {}
 
 Rect::Rect(const Rect& toCopy)
 	: Shape(toCopy.position, toCopy.filled)
+	, Singleton(this)
 	, width(toCopy.width)
 	, height(toCopy.height)
 {}
