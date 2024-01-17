@@ -34,7 +34,7 @@ Singleton<T>::Singleton(T* addr)
 		bool deleted = false;
 		//for (int i = 0; i < itemsOnScene->size() && !deleted; i++)
 		for (auto i = itemsOnScene->begin();!deleted && i != itemsOnScene->end();) // ++i
-			if (*i == address)
+			if ((*i)->undecorate(true) == address)
 			{
 				delete* i;
 				itemsOnScene->erase(i);
