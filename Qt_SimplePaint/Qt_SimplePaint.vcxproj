@@ -95,6 +95,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Segment.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="SingletonItemContainer.cpp" />
     <ClCompile Include="Spiral.cpp" />
     <ClCompile Include="SpiralParametersSelector.cpp" />
     <ClCompile Include="TextItem.cpp" />
@@ -131,6 +132,8 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Segment.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SingletonItemContainer.h" />
     <ClInclude Include="Spiral.h" />
     <ClInclude Include="TextItem.h" />
     <ClInclude Include="Triangle.h" />

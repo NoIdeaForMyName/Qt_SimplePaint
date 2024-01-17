@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Singleton.h"
 
 #include "SelectionDecorator.h"
 
@@ -15,6 +16,11 @@ Scene::Scene(QWidget* parent = nullptr)
 	//show();
 
 	setMouseTracking(true); // mouse is being tracked even if button is not clicked
+	// SINGLETON INITIALIZATION
+	Singleton<Item>::setItemsOnScene(items);
+
+	setMouseTracking(true); // mouse is being tracked even if button is not clicked
+	
 	setStyleSheet("background-color: white");
 }
 

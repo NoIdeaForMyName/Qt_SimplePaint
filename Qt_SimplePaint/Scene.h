@@ -20,6 +20,7 @@ public:
 	Point* getLastTwoMousePositions();
 	Item* getItemAtPosition(Point pos, Item* toIgnoreItems = nullptr, int length = 1);
 	bool eraseItem(Item* item);
+	std::vector<Item*>& getItems() { return items; }
 
 signals:
 	void mousePressed();
@@ -34,3 +35,8 @@ private:
 	bool isInside(Point* bbox, Point p);
 
 };
+
+// SINGLETON INITIALIZATION:
+//std::vector<Item*>* SingletonItemsContainer::itemsOnScene = &Scene::getItems();
+//template <typename T>
+//std::vector<Item*>* Singleton<T>::itemsOnScene = &Scene::getItems();

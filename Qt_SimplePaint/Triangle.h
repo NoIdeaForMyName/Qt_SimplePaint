@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Shape.h"
+#include "Singleton.h"
 
-class Triangle : public Shape
+class Triangle : public Shape, public Singleton<Triangle>
 {
 
 public:
