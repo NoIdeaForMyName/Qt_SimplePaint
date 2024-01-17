@@ -20,7 +20,6 @@ public:
 	Point* getLastTwoMousePositions();
 	Item* getItemAtPosition(Point pos, Item* toIgnoreItems = nullptr, int length = 1);
 	bool eraseItem(Item* item);
-	std::vector<Item*>& getItems() { return items; }
 
 signals:
 	void mousePressed();
