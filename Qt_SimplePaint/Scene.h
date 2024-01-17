@@ -27,9 +27,9 @@ signals:
 
 private:
 	std::vector<Item*> items;
-	Item* selectedItem;
 	std::list<Point> mouseClicks;
 	Point* lastTwoMousePos;
+	Item* selectedItem;
 
 	bool isInside(Point* bbox, Point p);
 

@@ -6,7 +6,7 @@ class ComplexItem : public Item
 {
 
 public:
-	ComplexItem(const std::vector<Item*>& items);
+	ComplexItem(std::vector<Item*>& items);
 	ComplexItem(const ComplexItem& toCopy);
 	~ComplexItem() override;
 	Item* clone() const override;
@@ -20,5 +20,6 @@ private:
 	std::vector<Item*> items;
 
 	static Point getInitialPosition(const std::vector<Item*>& it);
+	std::vector<Item*>& undecorateAll(std::vector<Item*>& initItems);
 
 };

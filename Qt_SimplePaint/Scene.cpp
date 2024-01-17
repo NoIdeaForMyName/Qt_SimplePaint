@@ -5,7 +5,6 @@
 Scene::Scene(QWidget* parent = nullptr)
 	: QWidget(parent)
 	, lastTwoMousePos(new Point[2])
-	, selectedItem(nullptr)
 {
 	//setObjectName("MyScene");
 	//QPalette pal = QPalette();
@@ -40,9 +39,6 @@ void Scene::paintEvent(QPaintEvent* event)
 		it->draw(painter);
 		//it->drawBoundingBox(painter);
 	}
-
-	if (selectedItem != nullptr)
-		selectedItem->draw(painter);
 }
 
 void Scene::draw()
@@ -77,20 +73,6 @@ void Scene::mouseMoveEvent(QMouseEvent* event)
 {
 	Point mousePos(event->position().x(), event->position().y());
 
-	// part for "checking" an Item on Scene:
-	Item* newlySelectedItem = getItemAtPosition(mousePos);
-	if (selectedItem != newlySelectedItem)
-	{
-		delete selectedItem;
-		selectedItem = nullptr;
-		if (newlySelectedItem != nullptr)
-		{
-			selectedItem = new SelectionDecorator(newlySelectedItem);
-		}
-		draw();
-	}
-	// end
-
 	// part for moving, path drawing etc.
 	if (event->buttons() == Qt::LeftButton)
 	{
@@ -98,10 +80,53 @@ void Scene::mouseMoveEvent(QMouseEvent* event)
 		lastTwoMousePos[0] = mousePos;
 		emit mouseMoved();
 	}
+	// end
+	
+	// part for "checking" an Item on Scene:
+	if (event->buttons() != Qt::LeftButton && event->buttons() != Qt::RightButton)
+	{
+		Item* newlySelectedItem = getItemAtPosition(mousePos);
+		if (newlySelectedItem != nullptr) newlySelectedItem = newlySelectedItem->undecorate(true);
+		if (newlySelectedItem != selectedItem)
+		{
+			for (int i = 0; i < items.size(); i++)
+			{
+				if (items[i]->undecorate(true) == selectedItem)
+				{ // UNDECORATING
+					items[i]->undecorate();
+					delete items[i];
+					items[i] = selectedItem;
+				} // DECORATING
+				if (items[i] == newlySelectedItem)
+					items[i] = new SelectionDecorator(newlySelectedItem);
+			}
+			selectedItem = newlySelectedItem;
+			draw();
+		}
+	}
+	// end
 }
 
 Item* Scene::getItemAtPosition(Point pos, Item* toIgnoreItems, int length)
-{
+{// item found at position is automatically taken to the beginning of the item list
+ // didn't want to change vector to list but i know i should
+	//for (auto it = items.begin(); it != items.end(); ++it)
+	//{
+	//	bool ignore = false;
+	//	for (int i = 0; i < length && !ignore; i++)
+	//		if (*it == toIgnoreItems + i)
+	//			ignore = true;
+
+	//	if (!ignore && isInside((*it)->getBoundingBox(), pos))
+	//	{
+	//		Item* found = *it;
+	//		if (where != 0) items.erase(it);
+	//		if (where == -1) items.insert(items.begin(), found);
+	//		if (where == 1) items.push_back(found);
+	//		return found;
+	//	}
+	//}
+	//return nullptr;
 	for (auto item : items)
 	{
 		bool ignore = false;
@@ -129,7 +154,7 @@ bool Scene::eraseItem(Item* item)
 		{
 			//delete* i; if you want to delete it - you have to do it OUTSIDE the method
 			items.erase(i); // i - INVALIDATED ITERATOR
-			selectedItem = nullptr;
+			//selectedItem = nullptr;
 			return true;
 		}
 	}

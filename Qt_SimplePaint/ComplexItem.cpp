@@ -1,8 +1,8 @@
 #include "ComplexItem.h"
 
 
-ComplexItem::ComplexItem(const std::vector<Item*>& items)
-	: Item(getInitialPosition(items))
+ComplexItem::ComplexItem(std::vector<Item*>& items)
+	: Item(getInitialPosition(undecorateAll(items)))
 	, items(items)
 {}
 
@@ -75,3 +75,16 @@ Point ComplexItem::getInitialPosition(const std::vector<Item*>& it)
 	return minPoint;
 }
 
+std::vector<Item*>& ComplexItem::undecorateAll(std::vector<Item*>& initItems)
+{
+	for (int i = 0; i < initItems.size(); i++)
+	{
+		Item* undecorated = initItems[i]->undecorate();
+		if (undecorated != initItems[i])
+		{
+			delete initItems[i];
+			initItems[i] = undecorated;
+		}
+	}
+	return initItems;
+}

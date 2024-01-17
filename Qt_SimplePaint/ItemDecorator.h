@@ -6,16 +6,20 @@ class ItemDecorator: public Item
 
 public:
 	ItemDecorator(Item* item);
-	//ItemDecorator(const ItemDecorator& toCopy);
-	//virtual ~ItemDecorator();
+	ItemDecorator(const ItemDecorator& toCopy);
+	virtual ~ItemDecorator();
 	Item* clone() const override;
+	Item* undecorate(bool onlyPeaking = false) override;
 
+	virtual Point getPosition() const;
 	virtual void translate(const Point& translationPoint);
 	virtual void computeBoundingBox();
+	virtual Point* getBoundingBox();
 	virtual void draw(QPainter& painter);
 
 protected:
 	Item* item;
+	bool decoratingItem;
 };
 /*
 Item(const Point& r_point);

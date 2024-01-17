@@ -20,6 +20,11 @@ Item::Item(const Item& toCopy)
 		boundingBox[i] = toCopy.boundingBox[i];
 }
 
+Item* Item::undecorate(bool onlyPeaking)
+{
+	return this;
+}
+
 Point Item::getPosition() const
 {
 	return position;
