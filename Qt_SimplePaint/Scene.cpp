@@ -78,16 +78,19 @@ void Scene::mouseMoveEvent(QMouseEvent* event)
 	Point mousePos(event->position().x(), event->position().y());
 
 	// part for "checking" an Item on Scene:
-	Item* newlySelectedItem = getItemAtPosition(mousePos);
-	if (selectedItem != newlySelectedItem)
+	if (event->buttons() != Qt::LeftButton && event->buttons() != Qt::RightButton)
 	{
-		delete selectedItem;
-		selectedItem = nullptr;
-		if (newlySelectedItem != nullptr)
+		Item* newlySelectedItem = getItemAtPosition(mousePos);
+		if (selectedItem != newlySelectedItem)
 		{
-			selectedItem = new SelectionDecorator(newlySelectedItem);
+			delete selectedItem;
+			selectedItem = nullptr;
+			if (newlySelectedItem != nullptr)
+			{
+				selectedItem = new SelectionDecorator(newlySelectedItem);
+			}
+			draw();
 		}
-		draw();
 	}
 	// end
 
