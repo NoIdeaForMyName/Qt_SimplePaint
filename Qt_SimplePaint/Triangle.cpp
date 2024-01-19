@@ -4,13 +4,11 @@
 Triangle::Triangle(const Point& p1, const Point& p2, const Point& p3, bool filled)
 	: Shape(Point(std::min({ p1.getX(), p2.getX(), p3.getX() }),
 	              std::min({ p1.getY(), p2.getY(), p3.getY() })), filled)
-	, Singleton(this)
 	, p1(p1), p2(p2), p3(p3)
 {}
 
 Triangle::Triangle(const Triangle& toCopy)
 	: Shape(toCopy.position, toCopy.filled)
-	, Singleton(this)
 	, p1(toCopy.p1), p2(toCopy.p2), p3(toCopy.p3)
 {}
 

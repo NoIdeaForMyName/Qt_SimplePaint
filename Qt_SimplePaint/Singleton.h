@@ -15,7 +15,7 @@ class Singleton: public SingletonItemsContainer
 	//static_assert(std::is_base_of_v<Item, T>, "T must be of type deriving from Item");
 
 public:
-	Singleton(T* addr);
+	Singleton();
 	static void setItemsOnScene(std::vector<Item*>& items);
 
 private:
@@ -26,7 +26,7 @@ template <typename T>
 T* Singleton<T>::address = nullptr;
 
 template <typename T>
-Singleton<T>::Singleton(T* addr)
+Singleton<T>::Singleton()
 	: SingletonItemsContainer()
 {
 	if (address != nullptr)
@@ -42,7 +42,7 @@ Singleton<T>::Singleton(T* addr)
 			}
 			else ++i;
 	}
-	address = addr;
+	address = (T*) this;
 }
 
 template <typename T>
